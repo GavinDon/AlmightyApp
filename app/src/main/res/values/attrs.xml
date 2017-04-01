@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyBanner">
+        <attr name="showTipText" format="boolean" />
+        <attr name="showCircle" format="boolean" />
+        <attr name="vpWidth" format="integer|reference" />
+        <attr name="vpHeight" format="integer|reference" />
+        <attr name="tipTxtColor" format="color|reference" />
+        <attr name="tipTxtSize" format="dimension|reference" />
+        <attr name="indicatePosition" format="enum">
+            <enum name="left" value="0" />
+            <enum name="middle" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+
+
+    </declare-styleable>
+
+
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+        collapsingToolbarLayout专门给ToolBar使用的
+        app:layout_scrollFlags="scroll"属性就直接配置在collapsingToolbarLayout上面;toolbar和子控件就不再配置了
+        exitUntilCollapsed：不管滑动列表到哪只要向上拉，这个View会跟着滑动直到折叠，配合android：minHeight属性使用，最小高度即为折叠后的高度
+        -->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_blue_dark"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <!--
+            如果imageview放到toolbar下面就会把toolbar覆盖掉，根节点是collapsingToolbarLayout
+            app:layout_collapseMode="none"默认效果，随父控件一起滑动；
+            app:layout_collapseMode="pin"缩放模式，在滚动的时候子控件不跟着走；
+            app:layout_collapseMode="parallax"视察效果，随父控件进行高度缩放
+            -->
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax" />
+            <!---->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toobar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
