@@ -1,9 +1,12 @@
 package com.ln.view;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.MenuItem;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -12,18 +15,21 @@ import com.ln.fragment.HomeFragment;
 import com.ln.fragment.NewsFragment;
 import com.ln.fragment.PersonalFragment;
 
-import java.util.List;
-
 import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
     @Bind(R.id.bottom_bar)
     BottomNavigationBar bottomNavigationBar;
 
+    @Bind(R.id.nav_view)
+    NavigationView navView;
+
+    @Bind(R.id.drawer)
+    DrawerLayout drawerLayout;
+
     private HomeFragment homeF; //首页fragment
     private NewsFragment newsF; //新闻资讯fragment
     private PersonalFragment personalF; //个人中心fragment
-    private List<Fragment> fragmentLst; //所有fragment的集合
     private FragmentManager fm;
     private String homeTag = HomeFragment.class.getSimpleName();
     private String newsTag = NewsFragment.class.getSimpleName();
@@ -46,9 +52,32 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         fm = this.getSupportFragmentManager();
         setDefaultFragment();
         bottomNavigationBar.setTabSelectedListener(this);
+        getToolbar().setNavigationIcon(R.mipmap.panda);
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            toggleLeftSliding();
+        }
+        return true;
+    }
+
+    /**
+     * 切换drawerLayout
+     */
+    private void toggleLeftSliding() {
+        if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+            drawerLayout.closeDrawer(Gravity.LEFT);
+
+        } else {
+            drawerLayout.openDrawer(Gravity.LEFT);
+        }
+//        ActionBarDrawerToggle  toggle=new ActionBarDrawerToggle(this,drawerLayout,getToolbar(),0,0);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+    }
 
     /**
      * 设置显示homeFragment;
@@ -56,13 +85,17 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private void setDefaultFragment() {
         FragmentTransaction ft = fm.beginTransaction();
         hideFragments(ft);
-        homeF=new HomeFragment();  //需要先new 出来 要不然 会出现重叠
-        ft.add(R.id.frame,homeF, homeTag);
+        if (homeF == null) {
+            homeF = new HomeFragment();  //需要先new 出来 要不然 会出现重叠
+        }
+        ft.add(R.id.frame, homeF, homeTag);
+        setTitle("首页");
         ft.commit();
     }
 
     /**
      * 隐藏掉所有的fragment
+     *
      * @param ft
      */
     private void hideFragments(FragmentTransaction ft) {
@@ -89,6 +122,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 } else {
                     ft.show(homeF);
                 }
+                setTitle("首页");
                 break;
             case 1:
                 if (newsF == null) {
@@ -97,6 +131,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 } else {
                     ft.show(newsF);
                 }
+                setTitle("资讯");
                 break;
             case 2:
                 if (personalF == null) {
@@ -105,6 +140,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 } else {
                     ft.show(personalF);
                 }
+                setTitle("个人中心");
                 break;
         }
         ft.commit();

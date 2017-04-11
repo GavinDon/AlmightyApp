@@ -3,9 +3,17 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFF</color>
+    <color name="default_font">#252323</color>
+    <color name="light_font">#686161</color>
 
 
     <color name="teal">#8D973E</color>
     <color name="orange">#FF6E5D</color>
     <color name="blue">#1BABA1</color>
+
+    <!--<color name="main_color">#A09FED</color>-->
+    <color name="main_color">#00BCD4</color>
+    <color name="cyan_100">#B2EBF2</color>
 </resources>
+

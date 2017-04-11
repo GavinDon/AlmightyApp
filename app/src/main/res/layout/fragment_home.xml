@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.ln.widgets.MyBanner
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="16sp"
-        android:text="home"
-        android:textColor="@color/colorAccent"
-        android:gravity="center"
+        android:layout_height="180dp"
+        android:layout_margin="8dp"
         />
+
 
 </LinearLayout>

@@ -3,10 +3,15 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <item name="colorAccent">@color/main_color</item>
     </style>
 
-
+    <style name="drawerArrow" parent="Widget.AppCompat.DrawerArrowToggle">
+        <!--这个是toolbar文字的颜色-->
+        <item name="android:textColorPrimary">#fff</item>
+        <!--这个是toolbar左边三道杆的颜色-->
+        <item name="android:textColorSecondary">#fff</item>
+    </style>
 </resources>

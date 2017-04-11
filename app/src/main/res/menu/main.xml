@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/home"
+        android:icon="@mipmap/ic_launcher"
+        android:title="首页" />
+    <item
+        android:id="@+id/garden_guide"
+        android:icon="@mipmap/ic_launcher"
+        android:title="园区导览" />
+    <item
+        android:id="@+id/route_recommend"
+        android:icon="@mipmap/ic_launcher"
+        android:title="线路推荐" />
+    <item
+
+        android:id="@+id/vr_travel"
+        android:icon="@mipmap/ic_launcher"
+        android:title="虚拟游园" />
+    <item
+        android:id="@+id/garden_news"
+        android:icon="@mipmap/ic_launcher"
+        android:title="园博资讯" />
+    <item
+        android:id="@+id/user_center"
+        android:icon="@mipmap/ic_launcher"
+        android:title="个人中心" />
+    </group>
+</menu>
