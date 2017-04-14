@@ -22,6 +22,11 @@ public class NewsAdapter extends BaseAdapter<NewsBean.ResultBean.DataBean> {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
     protected void convert(BaseViewHolder holder, int position, NewsBean.ResultBean.DataBean data) {
         holder.setText(R.id.ada_tv_title, data.getTitle())
                 .setText(R.id.ada_tv_introduce, data.getUrl())

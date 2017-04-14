@@ -21,6 +21,8 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     protected Context mContext;
     public OnItemClickListenerL mListener; //item 点击事件
     public OnChildClickListenerL mChildListener; //子控件点击
+    public OnLoadMoreListener mLoadMoreListener;
+
 
     public BaseAdapter(@LayoutRes int layoutId, List<T> data) {
         this.mData = data == null ? new ArrayList<T>() : data;
@@ -36,12 +38,18 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        convert(holder, position, mData.get(position));
         bindViewClickListener(holder, position);
+        int type = holder.getItemViewType();
+
+            convert(holder, position, mData.get(position));
+
     }
+
+
 
     /**
      * 点击事件处理
+     *
      * @param holder
      * @param postion
      */
@@ -67,9 +75,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
             return null;
     }
 
+
     @Override
     public int getItemCount() {
-        return mData.size();
+            return mData.size();
     }
 
     public void addData(List<T> data) {
@@ -78,6 +87,17 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
             mData.addAll(data);
             this.notifyDataSetChanged();
         }
+    }
+
+
+
+    public interface OnLoadMoreListener {
+        void onLoadMore();
+    }
+
+    public void addLoadMoreListener(OnLoadMoreListener listener) {
+        this.mLoadMoreListener = listener;
+
     }
 
     //****************************//
