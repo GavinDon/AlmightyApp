@@ -15,12 +15,17 @@
         android:id="@+id/avf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:flipInterval="4000"
         android:inAnimation="@animator/flipper_in"
         android:outAnimation="@animator/flipper_out"
-        android:flipInterval="4000"
-        >
+        />
 
+     <android.support.v7.widget.RecyclerView
+         android:id="@+id/home_rv"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="8dp"
+         />
 
-    </AdapterViewFlipper>
 
 </LinearLayout>

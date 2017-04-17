@@ -28,7 +28,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
         this.mData = data == null ? new ArrayList<T>() : data;
         this.mLayoutResId = layoutId;
     }
-
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
