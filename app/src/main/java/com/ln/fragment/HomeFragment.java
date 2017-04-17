@@ -7,9 +7,11 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.AdapterViewFlipper;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ln.adapters.HomeGridAdapter;
 import com.ln.base.BaseFragment;
 import com.ln.view.R;
+import com.ln.view.VideoActivity;
 import com.ln.widgets.MyBanner;
 import com.ln.widgets.TextAdapter;
 
@@ -23,7 +25,7 @@ import butterknife.Bind;
  * Created by linan   on 2017/4/5.
  */
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener {
     LinkedList<String> imgsUrl; //轮播图片URL合集
     @Bind(R.id.banner)
     MyBanner mBanner;
@@ -70,14 +72,15 @@ public class HomeFragment extends BaseFragment {
     }
 
     /**
-     * 模块
+     * 网格模块
      */
     private void initGrid() {
-        String  arrayGrids[][]={{"视频","10"},{"文字","20"},{"语言","30"},{"音乐","40"},{"视频","50"},{"视频","60"},{"视频","70"},{"视频","80"}};
+        //网格文字与对应的图片level
+        String arrayGrids[][] = {{"视频播放", "10"}, {"View学习", "20"}, {"语言", "30"}, {"音乐", "40"}, {"视频", "50"}, {"视频", "60"}, {"视频", "70"}, {"视频", "80"}};
         List<SparseArray<String>> gridList = new ArrayList<>();
         for (int i = 0; i < arrayGrids.length; i++) {
-            SparseArray<String> sa=new SparseArray<>();
-            sa.put(Integer.parseInt(arrayGrids[i][1]),arrayGrids[i][0]);
+            SparseArray<String> sa = new SparseArray<>();
+            sa.put(Integer.parseInt(arrayGrids[i][1]), arrayGrids[i][0]);
             gridList.add(sa);
         }
         HomeGridAdapter mAdapter = new HomeGridAdapter(R.layout.adapter_home_grid, gridList);
@@ -85,7 +88,17 @@ public class HomeFragment extends BaseFragment {
         gridRv.setHasFixedSize(true);
         gridRv.setLayoutManager(glm);
         gridRv.setAdapter(mAdapter);
-
+        mAdapter.setOnItemClickListener(this);
     }
 
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (position) {
+            case 0:
+                gotoActivity(VideoActivity.class, false);
+                break;
+            case 1:
+                break;
+        }
+    }
 }

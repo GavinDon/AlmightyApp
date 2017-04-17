@@ -5,6 +5,8 @@
               android:layout_height="wrap_content"
               android:gravity="center"
               android:layout_gravity="center_horizontal"
+              android:background="@drawable/item_press"
+              android:padding="8dp"
               android:orientation="vertical">
 
     <ImageView

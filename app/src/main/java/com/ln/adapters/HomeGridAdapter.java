@@ -1,12 +1,10 @@
 package com.ln.adapters;
 
-import android.support.annotation.LayoutRes;
-import android.util.Log;
 import android.util.SparseArray;
 import android.widget.ImageView;
 
-import com.ln.base.BaseAdapter;
-import com.ln.base.BaseViewHolder;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.ln.view.R;
 
 import java.util.List;
@@ -16,18 +14,18 @@ import java.util.List;
  * Created by liNan on 2017/4/17 9:48
  */
 
-public class HomeGridAdapter extends BaseAdapter<SparseArray<String>> {
+public class HomeGridAdapter extends BaseQuickAdapter<SparseArray<String>, BaseViewHolder> {
 
 
-    public HomeGridAdapter(@LayoutRes int layoutId, List<SparseArray<String>> data) {
-        super(layoutId, data);
+    public HomeGridAdapter(int layoutResId, List<SparseArray<String>> data) {
+        super(layoutResId, data);
     }
 
+
     @Override
-    protected void convert(BaseViewHolder holder, int position, SparseArray<String> data) {
-        holder.setText(R.id.ada_home_grid_tv, data.valueAt(position));
-        Log.i("homeGrid",data.keyAt(position)+"===");
-        ImageView iv = holder.getView(R.id.ada_home_grid_iv);
-        iv.setImageLevel(data.keyAt(position));
+    protected void convert(BaseViewHolder helper, SparseArray<String> item) {
+        helper.setText(R.id.ada_home_grid_tv, item.valueAt(0));
+        ImageView mImageView = helper.getView(R.id.ada_home_grid_iv);
+        mImageView.setImageLevel(item.keyAt(0));
     }
 }

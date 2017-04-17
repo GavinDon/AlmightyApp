@@ -4,10 +4,10 @@
         android:drawable="@mipmap/video"
         android:maxLevel="10"/>
     <item
-        android:drawable="@mipmap/video"
+        android:drawable="@mipmap/view"
         android:maxLevel="20"/>
     <item
-        android:drawable="@mipmap/video"
+        android:drawable="@mipmap/icon"
         android:maxLevel="30"/>
     <item
         android:drawable="@mipmap/video"
