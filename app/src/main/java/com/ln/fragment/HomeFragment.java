@@ -12,6 +12,7 @@ import com.ln.adapters.HomeGridAdapter;
 import com.ln.base.BaseFragment;
 import com.ln.view.R;
 import com.ln.view.VideoActivity;
+import com.ln.view.customView.MyViewCollection;
 import com.ln.widgets.MyBanner;
 import com.ln.widgets.TextAdapter;
 
@@ -76,7 +77,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
      */
     private void initGrid() {
         //网格文字与对应的图片level
-        String arrayGrids[][] = {{"视频播放", "10"}, {"View学习", "20"}, {"语言", "30"}, {"音乐", "40"}, {"视频", "50"}, {"视频", "60"}, {"视频", "70"}, {"视频", "80"}};
+        String arrayGrids[][] = {{"多媒体", "10"}, {"View", "20"}, {"动画", "30"}, {"断点", "40"}, {"设计", "50"}, {"视频", "60"}, {"视频", "70"}, {"视频", "80"}};
         List<SparseArray<String>> gridList = new ArrayList<>();
         for (int i = 0; i < arrayGrids.length; i++) {
             SparseArray<String> sa = new SparseArray<>();
@@ -98,6 +99,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 gotoActivity(VideoActivity.class, false);
                 break;
             case 1:
+                gotoActivity(MyViewCollection.class,false);
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package com.ln.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -66,5 +67,32 @@ public abstract class BaseActivity extends AppCompatActivity {
             onBackPressed();
         }
         return true;
+    }
+    public void gotoActivity(Class c){
+        gotoActivity(c,false);
+    }
+
+    /**
+     * 打开Activity并不需要传值
+     */
+    public void gotoActivity(Class<?> clz, boolean isClose) {
+        gotoActivity(clz, isClose, null);
+
+    }
+
+    /**
+     * 打开Activity并传值跳转成功关闭当前Activity
+     *
+     * @param clz     需要跳转到activity
+     * @param isClose 是否需要关闭当前Activity
+     * @param bundle  传递bundle数据
+     */
+    public void gotoActivity(Class<?> clz, boolean isClose, Bundle bundle) {
+        Intent mIntent = new Intent(this, clz);
+        if (bundle != null) mIntent.putExtras(bundle);
+        startActivity(mIntent);
+        if (isClose) {
+            this.finish();
+        }
     }
 }

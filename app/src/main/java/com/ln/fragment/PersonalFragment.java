@@ -18,6 +18,5 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     public void initViews(View self, Bundle savedInstanceState) {
-
-    }
+     }
 }

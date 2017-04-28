@@ -3,6 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowIsTranslucent">true</item>
         <item name="colorPrimary">@color/main_color</item>
         <item name="colorPrimaryDark">@color/main_color</item>
         <item name="colorAccent">@color/main_color</item>

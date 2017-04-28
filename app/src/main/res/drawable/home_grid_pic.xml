@@ -7,13 +7,13 @@
         android:drawable="@mipmap/view"
         android:maxLevel="20"/>
     <item
-        android:drawable="@mipmap/icon"
+        android:drawable="@mipmap/ic_animate"
         android:maxLevel="30"/>
     <item
         android:drawable="@mipmap/video"
         android:maxLevel="40"/>
     <item
-        android:drawable="@mipmap/video"
+        android:drawable="@mipmap/ic_design"
         android:maxLevel="50"/>
     <item
         android:drawable="@mipmap/video"
