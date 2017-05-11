@@ -1,10 +1,11 @@
 package com.ln.widgets;
+
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
-public class IconFontTextView extends TextView {
+public class IconFontTextView extends AppCompatTextView {
 
 
     public IconFontTextView(Context context) {

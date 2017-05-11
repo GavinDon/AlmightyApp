@@ -1,5 +1,6 @@
 package com.ln.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,9 +11,11 @@ import android.widget.AdapterViewFlipper;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ln.adapters.HomeGridAdapter;
 import com.ln.base.BaseFragment;
+import com.ln.view.DatabindingActivity;
 import com.ln.view.R;
 import com.ln.view.VideoActivity;
 import com.ln.view.customView.MyViewCollection;
+import com.ln.widgets.BannerViewPager;
 import com.ln.widgets.MyBanner;
 import com.ln.widgets.TextAdapter;
 
@@ -70,6 +73,13 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         imgsUrl.add("http://imageprocess.yitos.net/images/public/20160906/1291473163104906.jpg");
         //添加广告数据
         mBanner.setVpData(imgsUrl);
+        mBanner.getViewPager().setOnItemClickListener(new BannerViewPager.OnItemClickListener() {
+            @Override
+            public void onItemClick(BannerViewPager vp, int position) {
+                Intent mIntent=new Intent(HomeFragment.this.getContext(),DatabindingActivity.class);
+                startActivity(mIntent);
+            }
+        });
     }
 
     /**

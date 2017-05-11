@@ -1,16 +1,16 @@
 package com.ln.widgets;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.TextView;
 
 /**
  * description:
  * Created by liNan on 2017/4/14 11:08
  */
 
-public class DragTV extends TextView {
+public class DragTV extends AppCompatTextView {
     private float startx;// down事件发生时，手指相对于view左上角x轴的距离
     private float starty;// down事件发生时，手指相对于view左上角y轴的距离
     private float endx; // move事件发生时，手指相对于view左上角x轴的距离

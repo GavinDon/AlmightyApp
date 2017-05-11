@@ -70,6 +70,7 @@ public class ViewTest extends View {
     private Paint setPaintStyle(Paint mPaint) {
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(2);
+        mPaint.setDither(true); //防抖动
         mPaint.setColor(Color.BLACK);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         return mPaint;

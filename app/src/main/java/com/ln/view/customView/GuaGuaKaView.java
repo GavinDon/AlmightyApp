@@ -58,24 +58,20 @@ public class GuaGuaKaView extends View {
     private int mLastX;
     private int mLastY;
 
-    public GuaGuaKaView(Context context)
-    {
+    public GuaGuaKaView(Context context) {
         this(context, null);
     }
 
-    public GuaGuaKaView(Context context, AttributeSet attrs)
-    {
+    public GuaGuaKaView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public GuaGuaKaView(Context context, AttributeSet attrs, int defStyle)
-    {
+    public GuaGuaKaView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
-    private void init()
-    {
+    private void init() {
         mPath = new Path();
         // mBackBitmap = BitmapFactory.decodeResource(getResources(),
         // R.drawable.t2);
@@ -87,8 +83,7 @@ public class GuaGuaKaView extends View {
     /**
      * 初始化canvas的绘制用的画笔
      */
-    private void setUpBackPaint()
-    {
+    private void setUpBackPaint() {
         mBackPint.setStyle(Paint.Style.FILL);
         mBackPint.setTextScaleX(2f);
         mBackPint.setColor(Color.DKGRAY);
@@ -97,14 +92,12 @@ public class GuaGuaKaView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas)
-    {
+    protected void onDraw(Canvas canvas) {
         // canvas.drawBitmap(mBackBitmap, 0, 0, null);
         // 绘制奖项
         canvas.drawText(mText, getWidth() / 2 - mTextBound.width() / 2,
                 getHeight() / 2 + mTextBound.height() / 2, mBackPint);
-        if (!isComplete)
-        {
+        if (!isComplete) {
             drawPath();
             canvas.drawBitmap(mBitmap, 0, 0, null);
         }
@@ -112,8 +105,7 @@ public class GuaGuaKaView extends View {
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-    {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         int width = getMeasuredWidth();
@@ -134,13 +126,12 @@ public class GuaGuaKaView extends View {
     /**
      * 设置画笔的一些参数
      */
-    private void setUpOutPaint()
-    {
+    private void setUpOutPaint() {
         // 设置画笔
         // mOutterPaint.setAlpha(0);
         mOutterPaint.setColor(Color.parseColor("#c0c0c0"));
         mOutterPaint.setAntiAlias(true);
-        mOutterPaint.setDither(true);
+        mOutterPaint.setDither(true); //设置抖动
         mOutterPaint.setStyle(Paint.Style.STROKE);
         mOutterPaint.setStrokeJoin(Paint.Join.ROUND); // 圆角
         mOutterPaint.setStrokeCap(Paint.Cap.ROUND); // 圆角
@@ -151,8 +142,7 @@ public class GuaGuaKaView extends View {
     /**
      * 绘制线条
      */
-    private void drawPath()
-    {
+    private void drawPath() {
         mOutterPaint.setStyle(Paint.Style.STROKE);
         mOutterPaint
                 .setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
@@ -160,13 +150,11 @@ public class GuaGuaKaView extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+    public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction();
         int x = (int) event.getX();
         int y = (int) event.getY();
-        switch (action)
-        {
+        switch (action) {
             case MotionEvent.ACTION_DOWN:
                 mLastX = x;
                 mLastY = y;
@@ -195,13 +183,11 @@ public class GuaGuaKaView extends View {
     /**
      * 统计擦除区域任务
      */
-    private Runnable mRunnable = new Runnable()
-    {
+    private Runnable mRunnable = new Runnable() {
         private int[] mPixels;
 
         @Override
-        public void run()
-        {
+        public void run() {
 
             int w = getWidth();
             int h = getHeight();
@@ -221,13 +207,10 @@ public class GuaGuaKaView extends View {
             /**
              * 遍历统计擦除的区域
              */
-            for (int i = 0; i < w; i++)
-            {
-                for (int j = 0; j < h; j++)
-                {
+            for (int i = 0; i < w; i++) {
+                for (int j = 0; j < h; j++) {
                     int index = i + j * w;
-                    if (mPixels[index] == 0)
-                    {
+                    if (mPixels[index] == 0) {
                         wipeArea++;
                     }
                 }
@@ -236,13 +219,11 @@ public class GuaGuaKaView extends View {
             /**
              * 根据所占百分比，进行一些操作
              */
-            if (wipeArea > 0 && totalArea > 0)
-            {
+            if (wipeArea > 0 && totalArea > 0) {
                 int percent = (int) (wipeArea * 100 / totalArea);
                 Log.e("TAG", percent + "");
 
-                if (percent > 70)
-                {
+                if (percent > 70) {
                     Log.e("TAG", "清除区域达到70%，下面自动清除");
                     isComplete = true;
                     postInvalidate();

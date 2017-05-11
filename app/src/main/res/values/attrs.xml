@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="MyBanner">
-        <attr name="showTipText" format="boolean" />
-        <attr name="showCircle" format="boolean" />
-        <attr name="vpWidth" format="integer|reference" />
-        <attr name="vpHeight" format="integer|reference" />
-        <attr name="tipTxtColor" format="color|reference" />
-        <attr name="tipTxtSize" format="dimension|reference" />
+        <attr name="showTipText" format="boolean"/>
+        <attr name="showCircle" format="boolean"/>
+        <attr name="vpWidth" format="integer|reference"/>
+        <attr name="vpHeight" format="integer|reference"/>
+        <attr name="tipTxtColor" format="color|reference"/>
+        <attr name="tipTxtSize" format="dimension|reference"/>
         <attr name="indicatePosition" format="enum">
-            <enum name="left" value="0" />
-            <enum name="middle" value="1" />
-            <enum name="right" value="2" />
+            <enum name="left" value="0"/>
+            <enum name="middle" value="1"/>
+            <enum name="right" value="2"/>
         </attr>
-
-
     </declare-styleable>
 
+    <!--圆形进度条 !-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="circleColor" format="color|reference"></attr> <!--外圆颜色 !-->
+        <attr name="circleSize" format="integer|reference"></attr><!--外圆宽度 !-->
 
+    </declare-styleable>
+    <!--提交类按钮 !-->
+    <declare-styleable name="SubmitButton">
+        <attr name="btnNormalColor" format="color"/>
+        <attr name="btnPressColor" format="color"/>
+        <attr name="btnAngle" format="dimension|reference"/>
+
+    </declare-styleable>
 </resources>

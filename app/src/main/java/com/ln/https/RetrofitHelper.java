@@ -29,11 +29,14 @@ public class RetrofitHelper {
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
         okHttpClient.connectTimeout(10, TimeUnit.SECONDS);
         okHttpClient.readTimeout(20, TimeUnit.SECONDS);
+        okHttpClient.retryOnConnectionFailure(true);//重连;
         HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
         logger.setLevel(HttpLoggingInterceptor.Level.BODY);
         okHttpClient.addInterceptor(logger);
         mRetrofit = new Retrofit.Builder().baseUrl(BASE_URL).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient.build()).addConverterFactory(GsonConverterFactory.create()).build();
+
+
     }
 
     private static RetrofitHelper INSTANCE;
