@@ -31,8 +31,7 @@ public class MyTools {
      */
     public static StateListDrawable getSelector(Drawable normalDraw, Drawable pressedDraw) {
         StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[]{android.R.attr.state_enabled}, pressedDraw);
-        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressedDraw);
+        stateListDrawable.addState(new int[]{android.R.attr.state_enabled,android.R.attr.state_pressed}, pressedDraw);
         stateListDrawable.addState(new int[]{}, normalDraw);
         return stateListDrawable;
     }

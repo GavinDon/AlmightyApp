@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/mLayout"
     tools:context="com.ln.view.customView.ProgressDialogActivity">
 
     <!--    <Button
@@ -119,20 +119,60 @@
         android:id="@+id/circle_progress_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:circleColor="@color/amber_100"
         android:visibility="gone"
+        app:circleColor="@color/amber_100"
         app:circleSize="8"
         />
+
     <com.ln.widgets.SubmitButton
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        app:btnAngle="10dp"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        android:id="@+id/submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="18sp"
+        app:btnAngle="12dp"
         app:btnNormalColor="@color/cyan_500"
-        android:enabled="true"
+        app:btnPressColor="@color/cyan_200"
+        app:txtNormalColor="@color/white"
+        app:txtPressColor="@color/red_200"
         />
+
+    <com.ln.widgets.SubmitButton
+        android:id="@+id/button02"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:text="小button"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:btnAngle="12dp"
+        android:layout_margin="20dp"
+        app:btnNormalColor="@color/red_a400"
+        app:btnPressColor="@color/red_a200"
+        />
+    <com.ln.widgets.SubmitButton
+        android:id="@+id/button03"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:text="小圆角"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:btnAngle="5dp"
+        android:layout_margin="20dp"
+        app:btnNormalColor="@color/red_a400"
+        app:btnPressColor="@color/red_a200"
+        />
+
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:enabled="true"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/amber_200"/>
 
 </LinearLayout>

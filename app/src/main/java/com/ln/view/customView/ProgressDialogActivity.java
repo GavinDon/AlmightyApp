@@ -1,6 +1,7 @@
 package com.ln.view.customView;
 
 import android.animation.ValueAnimator;
+import android.content.res.ColorStateList;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ln.utils.MyTools;
@@ -17,6 +19,8 @@ import com.ln.view.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class ProgressDialogActivity extends AppCompatActivity {
 
@@ -28,6 +32,9 @@ public class ProgressDialogActivity extends AppCompatActivity {
     ImageView mImageView;
     @Bind(R.id.mLayout)
     LinearLayout mRootView;
+    @Bind(R.id.tv)
+    TextView tv;
+
     private int width;
     private int height;
 
@@ -37,6 +44,10 @@ public class ProgressDialogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_progress_dialog);
         ButterKnife.bind(this);
         Log.i("progress", "onCreate");
+        int norm[][] = new int[][]{{android.R.attr.state_pressed,android.R.attr.state_enabled,android.R.attr.state_focused}, {}};
+        int colors[] = {R.color.red_50, R.color.red_200};
+        ColorStateList colorStateList = new ColorStateList(norm, colors);
+        tv.setTextColor(colorStateList);
     }
 
     @Override
@@ -52,6 +63,9 @@ public class ProgressDialogActivity extends AppCompatActivity {
             init();
         }
 
+    }
+    @OnClick({R.id.submit_button,R.id.button02,R.id.button03})
+    public void onclick(){
     }
 
     private void init() {

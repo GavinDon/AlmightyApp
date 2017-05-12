@@ -1,35 +1,37 @@
 package com.ln.widgets;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.Shape;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.view.View;
 
+import com.ln.utils.MyTools;
 import com.ln.view.R;
-
-import static android.view.View.MeasureSpec.getMode;
-import static android.view.View.MeasureSpec.getSize;
 
 /**
  * description: 项目提交类型通用button
  * Created by liNan on 2017/5/11 11:02
  */
 
-public class SubmitButton extends AppCompatButton {
-    private int btnWidth = 200;
-    private int btnHeight = 60;
+public class SubmitButton extends AppCompatButton implements View.OnClickListener {
+    /**
+     * Shape is a rectangle, possibly with rounded corners
+     */
+    public static final int RECTANGLE = 0;
+
     private int btnNormalColor = 0x29b6f6;  //btn正常颜色
     private int btnPressColor = 0x81d4fa;  //btn按下颜色
-
+    private int btnStrokeColor = btnNormalColor; //按扭描边颜色
+    private int txtNormalColor = 0xffffff; //默认为白色
+    private int txtPressColor;
     private int btnAngle = 12;
-    private Paint btnPaint;
+    private int shapeType; //
+
 
     public SubmitButton(Context context) {
         this(context, null);
@@ -45,94 +47,85 @@ public class SubmitButton extends AppCompatButton {
         btnNormalColor = ta.getColor(R.styleable.SubmitButton_btnNormalColor, btnNormalColor);
         btnPressColor = ta.getColor(R.styleable.SubmitButton_btnPressColor, btnPressColor);
         btnAngle = ta.getDimensionPixelSize(R.styleable.SubmitButton_btnAngle, btnAngle);
+
+        txtNormalColor = ta.getColor(R.styleable.SubmitButton_txtNormalColor, txtNormalColor);
+        txtPressColor = ta.getColor(R.styleable.SubmitButton_txtPressColor, txtNormalColor);
+        shapeType = ta.getInteger(R.styleable.SubmitButton_shape, RECTANGLE);
         ta.recycle();
-        initPaint();
+        this.setBackgroundDrawable((this.setSelector()));
+//        this.setTextColor(createColorStateList(txtNormalColor, txtPressColor));
 
-
-    }
-    Canvas canvas;
-    RectF rf;
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        this.canvas=canvas;
-         rf = new RectF(0, 0, btnWidth, btnHeight);
-        //rx：x方向上的圆角半径。
-        //ry：y方向上的圆角半径。
-        canvas.drawRoundRect(rf, btnAngle, btnAngle, btnPaint);
-
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                SubmitButton.this.setSelector();
-                SubmitButton.this.setBackgroundColor(btnPressColor);
-                break;
-        }
-        return true;
-
-    }
-
-    private void setSelector() {
-//        ColorDrawable cd = new ColorDrawable(btnNormalColor);
-//        ColorDrawable cdPress = new ColorDrawable(btnPressColor);
-//        GradientDrawable gdNormal=new GradientDrawable();
-        ShapeDrawable sdNormal =new ShapeDrawable();
-        sdNormal.setShape(new Shape() {
-            @Override
-            public void draw(Canvas canvas, Paint paint) {
-                paint.setColor(btnNormalColor);
-                canvas.drawRoundRect(rf,btnAngle,btnAngle,paint);
-            }
-        });
-
-
-//        StateListDrawable s = MyTools.getSelector(gdNormal, gdPress);
-//        this.setBackgroundDrawable(s);
-    }
-
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int widthMode = getMode(widthMeasureSpec);
-        int heightMode = getMode(heightMeasureSpec);
-        int widthSize = getSize(widthMeasureSpec);
-        int heightSize = getSize(heightMeasureSpec);
-        if (widthMode == MeasureSpec.EXACTLY && heightMode == MeasureSpec.EXACTLY) {
-            btnWidth = widthSize;
-            btnHeight = heightSize;
-        } else if (widthMode == MeasureSpec.EXACTLY) {
-            btnWidth = widthSize;
-
-        } else if (heightMode == MeasureSpec.EXACTLY) {
-            btnHeight = heightSize;
-        }
-        if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
-            btnWidth = 200;
-            btnHeight = 60;
-        } else if (widthMeasureSpec == MeasureSpec.AT_MOST) {
-            btnWidth = 200;
-        } else if (heightMeasureSpec == MeasureSpec.AT_MOST) {
-            btnHeight = 60;
-        }
-        Log.i("dd", btnWidth + "==" + btnHeight);
-        setMeasuredDimension(btnWidth, btnHeight);
     }
 
     /**
-     * 初始化button参数
+     * 获取selector
+     *
+     * @return
      */
-    private void initPaint() {
-        btnPaint = new Paint();
-        btnPaint.setAntiAlias(true);
-        btnPaint.setStyle(Paint.Style.FILL);
-        btnPaint.setDither(true);
-        btnPaint.setStrokeCap(Paint.Cap.ROUND);
-        btnPaint.setColor(btnNormalColor);
+    private StateListDrawable setSelector() {
+        Drawable normal = getDrawable(btnNormalColor, btnAngle);
+        Drawable press = getDrawable(btnPressColor, btnAngle);
+        return MyTools.getSelector(normal, press);
+    }
+
+    /**
+     * 绘制shape
+     *
+     * @param rgb    shape 的背景色
+     * @param radius shape 圆角
+     * @return
+     */
+    private GradientDrawable getDrawable(int rgb, float radius) {
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setColor(rgb);//设置颜色
+        gradientDrawable.setCornerRadius(radius);//设置圆角的半径
+        gradientDrawable.setShape(shapeType);
+        return gradientDrawable;
+    }
+
+    /**
+     * 按下时文字颜色
+     *
+     * @param normalColor 文字正常颜色
+     * @param pressColor  获取焦点或者按下旰的颜色
+     * @return
+     */
+    private ColorStateList createColorStateList(int normalColor, int pressColor) {
+        //创建colorState的二维数组
+        int[][] states = new int[][]{{android.R.attr.state_pressed, android.R.attr.state_enabled, android.R.attr.focusable}, {-android.R.attr.state_pressed}};
+        int colors[] = new int[]{pressColor, normalColor};
+        ColorStateList mColorStateList = new ColorStateList(states, colors);
+        return mColorStateList;
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
+
+//    private long firstClickTime = 0;
+//    private long currentClickTime;
+//    private boolean isFirst = true;
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                currentClickTime = System.currentTimeMillis();
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                firstClickTime = currentClickTime;
+//                break;
+//        }
+//        if (isFirst) {
+//            firstClickTime = currentClickTime;
+//            isFirst=false;
+//        } else {
+//            if (currentClickTime - firstClickTime < 1000) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 }

@@ -25,6 +25,16 @@
         <attr name="btnNormalColor" format="color"/>
         <attr name="btnPressColor" format="color"/>
         <attr name="btnAngle" format="dimension|reference"/>
+        <attr name="btnStrokeColor" format="color"/>
+        <attr name="txtNormalColor" format="color|reference"/>
+        <attr name="txtPressColor" format="color|reference"/>
+        <attr name="shape" format="enum">
+            <enum name="rectangle" value="0"/>
+            <enum name="oval" value="1"/>
+            <enum name="line" value="2"/>
+            <enum name="ring" value="3"/>
+
+        </attr>
 
     </declare-styleable>
 </resources>
