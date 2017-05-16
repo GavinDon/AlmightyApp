@@ -3,6 +3,7 @@ package com.ln.widgets;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -27,9 +28,9 @@ public class SubmitButton extends AppCompatButton implements View.OnClickListene
     private int btnNormalColor = 0x29b6f6;  //btn正常颜色
     private int btnPressColor = 0x81d4fa;  //btn按下颜色
     private int btnStrokeColor = btnNormalColor; //按扭描边颜色
-    private int txtNormalColor = 0xffffff; //默认为白色
-    private int txtPressColor;
-    private int btnAngle = 12;
+    private int txtNormalColor = Color.WHITE; //默认为白色
+    private int txtPressColor=Color.RED;
+    private int btnAngle = 0;
     private int shapeType; //
 
 
@@ -53,8 +54,7 @@ public class SubmitButton extends AppCompatButton implements View.OnClickListene
         shapeType = ta.getInteger(R.styleable.SubmitButton_shape, RECTANGLE);
         ta.recycle();
         this.setBackgroundDrawable((this.setSelector()));
-//        this.setTextColor(createColorStateList(txtNormalColor, txtPressColor));
-
+        this.setTextColor(createColorStateList(txtNormalColor, txtPressColor));
     }
 
     /**
@@ -103,7 +103,7 @@ public class SubmitButton extends AppCompatButton implements View.OnClickListene
 
     }
 
-//    private long firstClickTime = 0;
+    //    private long firstClickTime = 0;
 //    private long currentClickTime;
 //    private boolean isFirst = true;
 //
@@ -127,5 +127,6 @@ public class SubmitButton extends AppCompatButton implements View.OnClickListene
 //        }
 //        return false;
 //    }
+
 
 }

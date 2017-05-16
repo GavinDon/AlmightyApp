@@ -1,7 +1,6 @@
 package com.ln.view.customView;
 
 import android.animation.ValueAnimator;
-import android.content.res.ColorStateList;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,10 +43,6 @@ public class ProgressDialogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_progress_dialog);
         ButterKnife.bind(this);
         Log.i("progress", "onCreate");
-        int norm[][] = new int[][]{{android.R.attr.state_pressed,android.R.attr.state_enabled,android.R.attr.state_focused}, {}};
-        int colors[] = {R.color.red_50, R.color.red_200};
-        ColorStateList colorStateList = new ColorStateList(norm, colors);
-        tv.setTextColor(colorStateList);
     }
 
     @Override
