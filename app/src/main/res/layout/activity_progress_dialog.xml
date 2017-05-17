@@ -9,104 +9,7 @@
     android:orientation="vertical"
     tools:context="com.ln.view.customView.ProgressDialogActivity">
 
-    <!--    <Button
-            android:id="@+id/btn_a"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_margin="16dp"
-            android:background="@color/cyan_100"
-            android:text="@string/app_name"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="16dp"
-            android:text="button1"
-            app:layout_constraintRight_toLeftOf="@id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/btn_a"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="16dp"
-            android:text="button2"
-            app:layout_constraintLeft_toRightOf="@id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/btn_a"
-            />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="帐号："
-            android:textColor="@color/default_font"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_account"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="16dp"
-            android:hint="请输入帐号"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/account"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_psw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
-            android:text="密码："
-            android:textColor="@color/default_font"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/account"
-            />
-
-        <android.support.v7.widget.AppCompatEditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="请输入密码"
-            android:textColor="@color/default_font"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toRightOf="@id/tv_psw"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_account"
-            />-->
-    <Button
-        android:id="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:visibility="gone"
-        />
 
     <ImageView
         android:id="@+id/image_view"
@@ -119,60 +22,9 @@
         android:id="@+id/circle_progress_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
         app:circleColor="@color/amber_100"
         app:circleSize="8"
         />
 
-    <com.ln.widgets.SubmitButton
-        android:id="@+id/submit_button"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textSize="18sp"
-        app:btnAngle="12dp"
-        app:btnNormalColor="@color/cyan_500"
-        app:btnPressColor="@color/cyan_200"
-        app:txtNormalColor="@color/white"
-        app:txtPressColor="@color/red_200"
-        />
-
-    <com.ln.widgets.SubmitButton
-        android:id="@+id/button02"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:text="小button"
-        android:textSize="16sp"
-        android:gravity="center"
-        app:btnAngle="12dp"
-        android:layout_margin="20dp"
-        app:btnNormalColor="@color/red_a400"
-        app:btnPressColor="@color/red_a200"
-        />
-    <com.ln.widgets.SubmitButton
-        android:id="@+id/button03"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:text="小圆角"
-        android:textSize="16sp"
-        android:gravity="center"
-        app:btnAngle="5dp"
-        android:layout_margin="20dp"
-        app:btnNormalColor="@color/red_a400"
-        app:btnPressColor="@color/red_a200"
-        />
-
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:enabled="true"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/amber_200"/>
 
 </LinearLayout>

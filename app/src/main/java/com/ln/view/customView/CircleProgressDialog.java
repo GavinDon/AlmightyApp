@@ -9,6 +9,8 @@ import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 import com.ln.utils.MyTools;
 import com.ln.view.R;
@@ -33,7 +35,11 @@ public class CircleProgressDialog extends View {
 
     private float textSize = 12;
     private Paint textPaint;
-    private float textWidht;
+    private float textWidth;
+    private ProgressAnim anim;
+    private float mSweepAngel;
+    private float startAngel = 135;
+
 
     public CircleProgressDialog(Context context) {
         this(context, null);
@@ -82,17 +88,56 @@ public class CircleProgressDialog extends View {
         textPaint.setAntiAlias(true);
         textPaint.setLinearText(true);
         textPaint.setColor(Color.BLACK);
-        textWidht = textPaint.measureText("我们的爱情");//计算字符的宽度
-
+        textWidth = textPaint.measureText("我们的爱情");//计算字符的宽度
+        anim = new ProgressAnim();
+        startAnimation(anim);
 
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
         canvas.drawCircle(deviceWidth / 2, deviceHeight / 2, mRadius, mPaint);
-        canvas.drawArc(mRectF, 270, 270, false, progressPaint);
-        canvas.drawText("我们的爱情", deviceWidth / 2 - textWidht / 2, deviceHeight / 2, textPaint);
+        canvas.drawArc(mRectF, startAngel, 270, false, progressPaint); //sweepAngel 扫过的角度,userCenter 是否连线
+        canvas.drawText("我们的爱情", deviceWidth / 2 - textWidth / 2, deviceHeight / 2, textPaint);
 
     }
+
+    private void startAnim() {
+        if (anim != null) {
+            anim.setDuration(2000);
+            startAnimation(anim);
+        }
+    }
+
+    /**
+     * 关闭动画 并且隐藏进度条
+     */
+    public  void stopAnimAndView() {
+        if (anim != null) {
+            clearAnimation();
+        }
+    }
+
+    public void update() {
+        startAnim();
+    }
+
+
+    class ProgressAnim extends Animation {
+        @Override
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            super.applyTransformation(interpolatedTime, t);
+            if (interpolatedTime < 1.0) {
+                startAngel = 360 * interpolatedTime;
+                invalidate();
+            } else {
+                clearAnimation();
+                startAngel = 0;
+                startAnim();
+            }
+
+        }
+    }
+
 }

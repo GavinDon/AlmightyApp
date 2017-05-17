@@ -5,34 +5,29 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.BounceInterpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ln.utils.MyTools;
 import com.ln.view.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 public class ProgressDialogActivity extends AppCompatActivity {
 
     @Bind(R.id.circle_progress_dialog)
     CircleProgressDialog circleProgressDialog;
-    @Bind(R.id.button)
-    Button mButton;
     @Bind(R.id.image_view)
     ImageView mImageView;
     @Bind(R.id.mLayout)
     LinearLayout mRootView;
-    @Bind(R.id.tv)
-    TextView tv;
 
     private int width;
     private int height;
@@ -56,11 +51,17 @@ public class ProgressDialogActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
             init();
+            circleProgressDialog.update();
+            Timer timer=new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                  circleProgressDialog.stopAnimAndView();
+                    circleProgressDialog.setVisibility(View.GONE);
+                }
+            },5000);
         }
 
-    }
-    @OnClick({R.id.submit_button,R.id.button02,R.id.button03})
-    public void onclick(){
     }
 
     private void init() {
@@ -106,8 +107,8 @@ public class ProgressDialogActivity extends AppCompatActivity {
 //        set.playTogether(ObjectAnimator.ofPropertyValuesHolder(mButton, pro, pro2));
 //        set.setInterpolator(new AccelerateInterpolator());
 //        set.setDuration(5000).start();
-        mButton.animate().x(300).rotationBy(270).setDuration(2000).setInterpolator(new  LinearInterpolator()).start();
-        mButton.setOnClickListener(v -> Toast.makeText(this, "hk", Toast.LENGTH_SHORT).show());
+//        mButton.animate().x(300).rotationBy(270).setDuration(2000).setInterpolator(new  LinearInterpolator()).start();
+//        mButton.setOnClickListener(v -> Toast.makeText(this, "hk", Toast.LENGTH_SHORT).show());
         //tween
     }
 
