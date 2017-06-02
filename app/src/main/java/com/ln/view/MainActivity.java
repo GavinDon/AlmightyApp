@@ -15,16 +15,16 @@ import com.ln.fragment.HomeFragment;
 import com.ln.fragment.NewsFragment;
 import com.ln.fragment.PersonalFragment;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
-    @Bind(R.id.bottom_bar)
+    @BindView(R.id.bottom_bar)
     BottomNavigationBar bottomNavigationBar;
 
-    @Bind(R.id.nav_view)
+    @BindView(R.id.nav_view)
     NavigationView navView;
 
-    @Bind(R.id.drawer)
+    @BindView(R.id.drawer)
     DrawerLayout drawerLayout;
 
     private HomeFragment homeF; //首页fragment

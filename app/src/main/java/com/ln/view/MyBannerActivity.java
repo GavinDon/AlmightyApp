@@ -1,9 +1,7 @@
 package com.ln.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.ln.widgets.MyBanner;
 
@@ -23,9 +21,7 @@ public class MyBannerActivity extends AppCompatActivity {
         imgsUrl.add("http://imageprocess.yitos.net/images/public/20160906/1291473163104906.jpg");
         myBanner.setVpData(imgsUrl);
         myBanner.getViewPager().setOnItemClickListener((vp, position) -> {
-            Toast.makeText(this, position + "=", Toast.LENGTH_SHORT).show();
-            Intent mIntent = new Intent(this, DatabindingActivity.class);
-            startActivity(mIntent);
+
         });
     }
 

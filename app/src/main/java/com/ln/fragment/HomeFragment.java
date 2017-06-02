@@ -1,6 +1,5 @@
 package com.ln.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +10,11 @@ import android.widget.AdapterViewFlipper;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ln.adapters.HomeGridAdapter;
 import com.ln.base.BaseFragment;
-import com.ln.view.DatabindingActivity;
 import com.ln.view.R;
+import com.ln.view.StartKotlin;
 import com.ln.view.VideoActivity;
 import com.ln.view.customView.MyViewCollection;
+import com.ln.view.designPattern.DesignActivity;
 import com.ln.widgets.BannerViewPager;
 import com.ln.widgets.MyBanner;
 import com.ln.widgets.TextAdapter;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by linan   on 2017/4/5.
@@ -31,11 +31,11 @@ import butterknife.Bind;
 
 public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener {
     LinkedList<String> imgsUrl; //轮播图片URL合集
-    @Bind(R.id.banner)
+    @BindView(R.id.banner)
     MyBanner mBanner;
-    @Bind(R.id.avf)
+    @BindView(R.id.avf)
     AdapterViewFlipper flipper;
-    @Bind(R.id.home_rv)
+    @BindView(R.id.home_rv)
     RecyclerView gridRv; //网格模块
 
     @Override
@@ -76,8 +76,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mBanner.getViewPager().setOnItemClickListener(new BannerViewPager.OnItemClickListener() {
             @Override
             public void onItemClick(BannerViewPager vp, int position) {
-                Intent mIntent=new Intent(HomeFragment.this.getContext(),DatabindingActivity.class);
-                startActivity(mIntent);
+                gotoActivity(StartKotlin.class,false);
             }
         });
     }
@@ -110,6 +109,9 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 break;
             case 1:
                 gotoActivity(MyViewCollection.class,false);
+                break;
+            case 4:
+                gotoActivity(DesignActivity.class,false);
                 break;
         }
     }

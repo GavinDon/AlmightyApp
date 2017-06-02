@@ -12,33 +12,33 @@ import android.widget.RelativeLayout;
 
 import com.ln.view.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AnimEffectActivity extends AppCompatActivity {
 
-    @Bind(R.id.start)
+    @BindView(R.id.start)
     Button start;
-    @Bind(R.id.ll_point_circle_1)
+    @BindView(R.id.ll_point_circle_1)
     LinearLayout llPointCircle1;
-    @Bind(R.id.ll_point_circle_2)
+    @BindView(R.id.ll_point_circle_2)
     LinearLayout llPointCircle2;
-    @Bind(R.id.ll_point_circle_3)
+    @BindView(R.id.ll_point_circle_3)
     LinearLayout llPointCircle3;
-    @Bind(R.id.ll_point_circle_4)
+    @BindView(R.id.ll_point_circle_4)
     LinearLayout llPointCircle4;
-    @Bind(R.id.rl1)
+    @BindView(R.id.rl1)
     RelativeLayout rl1;
-    @Bind(R.id.ll_point_circle_11)
+    @BindView(R.id.ll_point_circle_11)
     LinearLayout llPointCircle11;
-    @Bind(R.id.ll_point_circle_22)
+    @BindView(R.id.ll_point_circle_22)
     LinearLayout llPointCircle22;
-    @Bind(R.id.ll_point_circle_33)
+    @BindView(R.id.ll_point_circle_33)
     LinearLayout llPointCircle33;
-    @Bind(R.id.ll_point_circle_44)
+    @BindView(R.id.ll_point_circle_44)
     LinearLayout llPointCircle44;
-    @Bind(R.id.rl2)
+    @BindView(R.id.rl2)
     RelativeLayout rl2;
 
     @Override

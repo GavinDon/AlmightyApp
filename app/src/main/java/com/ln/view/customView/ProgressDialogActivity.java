@@ -5,7 +5,6 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,20 +12,17 @@ import android.widget.LinearLayout;
 import com.ln.utils.MyTools;
 import com.ln.view.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class ProgressDialogActivity extends AppCompatActivity {
 
-    @Bind(R.id.circle_progress_dialog)
+    @BindView(R.id.circle_progress_dialog)
     CircleProgressDialog circleProgressDialog;
-    @Bind(R.id.image_view)
+    @BindView(R.id.image_view)
     ImageView mImageView;
-    @Bind(R.id.mLayout)
+    @BindView(R.id.mLayout)
     LinearLayout mRootView;
 
     private int width;
@@ -52,14 +48,7 @@ public class ProgressDialogActivity extends AppCompatActivity {
         if (hasFocus) {
             init();
             circleProgressDialog.update();
-            Timer timer=new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                  circleProgressDialog.stopAnimAndView();
-                    circleProgressDialog.setVisibility(View.GONE);
-                }
-            },5000);
+
         }
 
     }
@@ -77,20 +66,20 @@ public class ProgressDialogActivity extends AppCompatActivity {
             PointF endPoint = (PointF) endValue;
             float x = starPoint.x + fraction * (endPoint.x - starPoint.x);
             float y = starPoint.y + fraction * (endPoint.y - starPoint.y);
-            PointF pointF=new PointF(x,y);
+            PointF pointF = new PointF(x, y);
             return pointF;
         });
         valueAnimator.setDuration(5000);
         valueAnimator.start();
         valueAnimator.addUpdateListener(animation -> {
-            PointF pointF= (PointF) animation.getAnimatedValue();
+            PointF pointF = (PointF) animation.getAnimatedValue();
             mImageView.setX(pointF.x);
             mImageView.setY(pointF.y);
 //            int x= (int) pointF.x;
 //            int y= (int) pointF.y;
 //            mImageView.scrollTo(x,y);
             // getAnimatedFraction 获取动画当前时间流逝的百分比，范围在0~1之间
-            if(animation.getAnimatedFraction()==1){
+            if (animation.getAnimatedFraction() == 1) {
 //                startActivity(new Intent(ProgressDialogActivity.this,AnimEffectActivity.class));
             }
 

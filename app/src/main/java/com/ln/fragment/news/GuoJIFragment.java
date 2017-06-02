@@ -18,7 +18,7 @@ import com.ln.utils.DividerItemDecoration;
 import com.ln.view.R;
 import com.ln.view.WebActivity;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -31,7 +31,7 @@ public class GuoJIFragment extends Fragment {
     private Context mContext;
     private NewsAdapter mAdapter;
 
-    @Bind(R.id.news_rn)
+    @BindView(R.id.news_rn)
     RecyclerView mRecyclerView;
 
     private static final String ARG_PARAM1 = "currType";
@@ -104,6 +104,5 @@ public class GuoJIFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
     }
 }

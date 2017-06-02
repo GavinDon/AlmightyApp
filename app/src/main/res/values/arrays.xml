@@ -5,6 +5,14 @@
         <item >中共中央八项规定、六条禁令具体内容</item>
         <item >贯彻落实中央八项规定存在的问题</item>
         <item >中央八项规定具体内容有哪些</item>
-
+    </array>
+    <array name="design">
+        <item >策略模式</item>
+        <item >适配器模式</item>
+        <item >观察者模式</item>
+        <item >装饰模式</item>
+        <item >代理模式</item>
+        <item >建造模式</item>
+        <item >工厂模式</item>
     </array>
 </resources>

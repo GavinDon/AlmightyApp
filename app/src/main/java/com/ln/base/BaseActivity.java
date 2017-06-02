@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TextView mTitle;
+    public String mClassName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initToolbar();
         this.initView(savedInstanceState);
+        mClassName= this.getClass().getSimpleName();
     }
 
     protected abstract void initView(Bundle savedInstanceState);
@@ -94,5 +96,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (isClose) {
             this.finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

@@ -37,7 +37,7 @@ public class CircleProgressDialog extends View {
     private Paint textPaint;
     private float textWidth;
     private ProgressAnim anim;
-    private float mSweepAngel;
+    private float mSweepAngel = 270;
     private float startAngel = 135;
 
 
@@ -98,9 +98,9 @@ public class CircleProgressDialog extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawCircle(deviceWidth / 2, deviceHeight / 2, mRadius, mPaint);
-        canvas.drawArc(mRectF, startAngel, 270, false, progressPaint); //sweepAngel 扫过的角度,userCenter 是否连线
+        canvas.drawArc(mRectF, startAngel, mSweepAngel, false, progressPaint); //sweepAngel 扫过的角度,userCenter 是否连线
         canvas.drawText("我们的爱情", deviceWidth / 2 - textWidth / 2, deviceHeight / 2, textPaint);
-
+        canvas.rotate(360);
     }
 
     private void startAnim() {
@@ -113,9 +113,10 @@ public class CircleProgressDialog extends View {
     /**
      * 关闭动画 并且隐藏进度条
      */
-    public  void stopAnimAndView() {
+    public void stopAnimAndView() {
         if (anim != null) {
             clearAnimation();
+            this.setVisibility(View.GONE);
         }
     }
 
@@ -130,13 +131,12 @@ public class CircleProgressDialog extends View {
             super.applyTransformation(interpolatedTime, t);
             if (interpolatedTime < 1.0) {
                 startAngel = 360 * interpolatedTime;
-                invalidate();
+                mSweepAngel = 270 * interpolatedTime;
             } else {
                 clearAnimation();
-                startAngel = 0;
                 startAnim();
             }
-
+            postInvalidate();
         }
     }
 

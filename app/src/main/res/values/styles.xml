@@ -7,7 +7,16 @@
         <item name="colorPrimary">@color/main_color</item>
         <item name="colorPrimaryDark">@color/main_color</item>
         <item name="colorAccent">@color/main_color</item>
+        <item name="android:windowAnimationStyle">@style/anim_fade</item>
 
+
+    </style>
+    <!--Activity过场动画-->
+    <style name="anim_fade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/from_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/out_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_left</item>
     </style>
 
     <style name="drawerArrow" parent="Widget.AppCompat.DrawerArrowToggle">

@@ -57,7 +57,7 @@
 -keepclasseswithmembernames class * {
     @butterknife.* <methods>;
 }
-##########okhttp不参与混淆##########
+##########retrofit2不参与混淆##########
 -dontwarn com.squareup.okhttp.**
 -keep class com.squareup.okhttp.** { *;}
 -dontwarn okio.**
@@ -80,13 +80,13 @@
 }
 
  # ---------------------高德地图-------------------------------
-    -keep class com.amap.api.location.**{*;}
-    -keep class com.amap.api.fence.**{*;}
-    -keep class com.autonavi.aps.amapapi.model.**{*;}
-    -dontwarn com.amap.apis.utils.core.crash.*
-     # ---------------------微信分享-------------------------------
-     -keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
-     -keep class com.tencent.mm.sdk.modelmsg.** implements   com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
-   # ---------------------lambda-------------------------------
+ -keep class com.amap.api.location.**{*;}
+ -keep class com.amap.api.fence.**{*;}
+ -keep class com.autonavi.aps.amapapi.model.**{*;}
+ -dontwarn com.amap.apis.utils.core.crash.*
+# ---------------------微信分享-------------------------------
+ -keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
+ -keep class com.tencent.mm.sdk.modelmsg.** implements   com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
+# ---------------------lambda-------------------------------
  -dontwarn java.lang.invoke.*
  -dontwarn **$$Lambda$*

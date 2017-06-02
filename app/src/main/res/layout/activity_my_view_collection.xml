@@ -14,9 +14,9 @@
         android:id="@+id/basic_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/item_press"
-        android:padding="8dp"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
         android:text="BasicView"
         android:textSize="16sp"
         />
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/item_press"
-        android:padding="8dp"
+        android:padding="16dp"
         android:text="刮刮奖"
         android:textSize="16sp"
         />
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/item_press"
-        android:padding="8dp"
+        android:padding="16dp"
         android:text="进度条"
         android:textSize="16sp"
         />

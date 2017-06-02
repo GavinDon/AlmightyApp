@@ -79,6 +79,12 @@
         </activity>
         <activity android:name=".customView.AnimEffectActivity">
         </activity>
+        <activity android:name=".designPattern.DesignActivity">
+        </activity>
+        <activity android:name=".designPattern.StrategyPatternActivity">
+        </activity>
+        <activity android:name=".StartKotlin">
+        </activity>
     </application>
 
 </manifest>

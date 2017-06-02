@@ -1,17 +1,20 @@
 package com.ln.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
  * Created by linan   on 2017/4/7.
  */
 
-public class NewsBean   {
+public class NewsBean {
 
 
     private String reason;
     private ResultBean result;
-    private int error_code;
+    @SerializedName("error_code")
+    private int errorCode;
 
     public String getReason() {
         return reason;
@@ -29,12 +32,12 @@ public class NewsBean   {
         this.result = result;
     }
 
-    public int getError_code() {
-        return error_code;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public void setError_code(int error_code) {
-        this.error_code = error_code;
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
     public static class ResultBean {

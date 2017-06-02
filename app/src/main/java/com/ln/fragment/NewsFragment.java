@@ -15,7 +15,7 @@ import com.ln.view.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by linan   on 2017/4/5.
@@ -23,9 +23,9 @@ import butterknife.Bind;
 
 public class NewsFragment extends BaseFragment {
 
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
-    @Bind(R.id.news_vp)
+    @BindView(R.id.news_vp)
     ViewPager mViewPager;
 
     private Context mContext;
